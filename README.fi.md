@@ -51,6 +51,18 @@ Tämä repo dokumentoi koko tuotannon: **ideasta → lyriikoista → audiosta �
 
 ---
 
+## Arkkitehtuuri yhdellä silmäyksellä
+
+<div align="center">
+
+![Arkkitehtuurikaavio — Politrukki AI Music Video -putki](html/architecture.svg)
+
+</div>
+
+Lineaarinen virtaus ylhäältä alas: AI-työkalut (sininen) tuottavat sisältöä (output-laatikot), jotka päätyvät **DaVinci Resolveen** (vihreä) — kasaajaan, joka yhdistää kaikki osat — ja sieltä lopulta renderöidään ulos jokaiselle alustalle (keltainen). Yksi biisi, yksi master-projekti, kaikki kuvasuhteet ja loudness-tavoitteet kohdalleen ulos lähtiessä.
+
+---
+
 ## Pipeline — 9 vaihetta
 
 | # | Vaihe | Työkalu | Kansio |

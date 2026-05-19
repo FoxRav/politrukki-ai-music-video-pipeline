@@ -51,6 +51,18 @@ This repository documents the full production: **idea → lyrics → audio → s
 
 ---
 
+## Architecture overview
+
+<div align="center">
+
+![Architecture overview — Politrukki AI Music Video Pipeline](html/architecture.svg)
+
+</div>
+
+Linear flow, top to bottom: AI tools (blue) produce content (outlined outputs), which lands in **DaVinci Resolve** (green) — the assembler that combines every asset — and is finally rendered out to every distribution platform (yellow). One song, one master project, every aspect ratio and loudness target hit on the way out.
+
+---
+
 ## Pipeline — 9 stages
 
 | # | Stage | Tool | Folder |
