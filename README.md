@@ -8,6 +8,7 @@
 [![Stack](https://img.shields.io/badge/stack-Claude%20·%20ElevenLabs%20·%20FocalML%20·%20DaVinci-00e5ff)]()
 [![AI Content](https://img.shields.io/badge/AI%20generated-disclosed-ff2bd6)]()
 [![Made in](https://img.shields.io/badge/made%20in-Lapua%2C%20Finland-ffb627)]()
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
 
 ![Pipeline Checklist](html/checklist.png)
 
@@ -180,4 +181,10 @@ YouTube-julkaisussa video on merkitty *Altered content* -lipulla YouTuben käyt�
 
 ## Lisenssi
 
-All rights reserved · **Politrukki Live** · Lapua, Finland · 2026
+Tämä repo on lisensoitu **[MIT-lisenssillä](LICENSE)** — saat vapaasti **käyttää, kopioida, muokata, yhdistää, julkaista, jakaa ja myydä** repon sisältöä, kunhan alkuperäinen copyright-merkintä ja lisenssiteksti säilyvät mukana.
+
+> **Käytännössä:** Forkkaa, opi, rakenna omasi, julkaise oma biisisi samalla putkella — ei tarvitse pyytää lupaa.
+
+**Huom.** MIT-lisenssi kattaa **repon sisällön** (tekstit, promptit, käsikirjoituksen, dokumentaation, struktuurin). Julkaistu **musiikkikappale, video ja kuvat** (`Lapua Jonne!` -teos kokonaisuutena) on erillinen taiteellinen teos — siihen sovelletaan normaalia tekijänoikeutta (© 2026 Politrukki Live). Eli: pipeline ja työkalut ovat vapaita, mutta tee oma biisi äläkä uudelleenjulkaise tätä.
+
+© 2026 **Politrukki Live** · Lapua, Finland
