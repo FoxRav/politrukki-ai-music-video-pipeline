@@ -294,6 +294,6 @@ Licensed under CC BY-NC 4.0
 
 **Huom.** Lisenssi kattaa **järjestelmän** (rakenne, työkalut, dokumentaatio). Julkaistu **musiikkikappale, video ja kuvat** (`Lapua Jonne!` -teos kokonaisuutena) on erillinen taiteellinen teos, johon sovelletaan normaalia tekijänoikeutta — kaikki oikeudet pidätetään. Pipeline on jaettu, teos ei.
 
-Kaupalliseen lisensointiin: ota yhteyttä tekijään.
+Kaupalliseen lisensointiin: ota yhteyttä [marko@faktum-ai.com](mailto:marko@faktum-ai.com).
 
-© 2026 **Politrukki Live** · Lapua, Finland
+© 2026 **Politrukki Live** · Faktum AI · Lapua, Finland

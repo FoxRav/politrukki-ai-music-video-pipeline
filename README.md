@@ -299,9 +299,9 @@ In exchange I can offer:
 
 ### Get in touch
 
+- **Email:** [marko@faktum-ai.com](mailto:marko@faktum-ai.com) *(preferred for partnership / sponsorship conversations)*
 - Open an issue or discussion in this repository
 - Reach out on the live build chat at [kick.com/politrukki](https://kick.com/politrukki)
-- Email: *available on request via GitHub*
 
 ---
 
@@ -335,6 +335,6 @@ Licensed under CC BY-NC 4.0
 
 **Note.** The license covers the **system** (structure, tools, documentation). The released **song, video, and imagery** (`Lapua Jonne!` as an artistic work) is a separate copyrighted work, all rights reserved. The pipeline is shared; the work is not.
 
-For commercial licensing, please contact the author.
+For commercial licensing, contact [marko@faktum-ai.com](mailto:marko@faktum-ai.com).
 
-© 2026 **Politrukki Live** · Lapua, Finland
+© 2026 **Politrukki Live** · Faktum AI · Lapua, Finland
