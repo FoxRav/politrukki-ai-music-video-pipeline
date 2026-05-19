@@ -9,6 +9,7 @@
 [![AI Content](https://img.shields.io/badge/AI%20generated-disclosed-ff2bd6)]()
 [![Made in](https://img.shields.io/badge/made%20in-Lapua%2C%20Finland-ffb627)]()
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)](LICENSE)
+[![Live build on Kick](https://img.shields.io/badge/live%20build-kick.com%2Fpolitrukki-53fc18)](https://kick.com/politrukki)
 
 ![Pipeline Checklist](html/checklist.png)
 
@@ -39,9 +40,12 @@ Tämä repo dokumentoi koko tuotannon: **ideasta → lyriikoista → audiosta �
 | | |
 | --- | --- |
 | YouTube | [youtube.com/watch?v=dnFbXpW00kM](https://www.youtube.com/watch?v=dnFbXpW00kM) |
+| Live-rakennus *(katso miten tämä syntyi)* | [kick.com/politrukki](https://kick.com/politrukki) |
 | Lyriikat | [`02_lyriikat/lyriikat_final.md`](02_lyriikat/lyriikat_final.md) |
 | YouTube-metadata (otsikko/kuvaus/tagit) | [`09_julkaisu/metadata.md`](09_julkaisu/metadata.md) |
 | Live-progress-dashboard (avaa selaimessa) | [`html/checklist.html`](html/checklist.html) |
+
+> **Live-rakennuksesta:** Koko putki vaiheista 01–07 ja 09 on rakennettu livenä [kick.com/politrukki](https://kick.com/politrukki) -kanavalla. **Poikkeus:** vaihe **08 (DaVinci Resolve)** tehdään offlinena — Resolven 4K-aikajana yhdessä OBS-streamin kanssa ei mahdu tämän koneen suorituskykybudjettiin. Editointivaihe näkyy lopputuloksessa, ei prosessina.
 
 ---
 
