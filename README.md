@@ -22,13 +22,15 @@
 
 ## About
 
-This repository is a **public case study in AI-native production workflow**: how one creator can run an entire multimodal AI production end-to-end with **Cursor as the orchestration layer** and Claude, ChatGPT, ElevenLabs, FocalML Seedance, and DaVinci Resolve as the execution engines.
+**Lapua Jonne!** is the first music video shipped on the Politrukki Live production pipeline — a **working AI-native production system** that takes a single creator from song idea to a published, multi-platform release without a studio, without a band, and without a video crew.
 
-The concrete deliverable is one finished music video. The artifact, however, is the **methodology** — every prompt, every config, every script, every README, every render setting is open and reproducible.
+**Cursor is the orchestration layer.** Claude, ChatGPT, ElevenLabs, FocalML Seedance, and DaVinci Resolve are the execution engines plugged into it. The combination is what makes a one-person operation ship at full production quality across audio, video, stems, master, and platform-specific deliverables.
 
-**Lapua Jonne!** is a roots reggae track about a 17-year-old Finnish *jonne* (slang for a small-town teenage moped kid) revving his tuned 80cc PV-Suzuki on the old VR railyard in Lapua, next to a derelict cartridge factory. Same restless Ostrobothnian spirit as the 1800s *puukkojunkkarit* knife-fighters — only the throttle has replaced the blade.
+This repository is the **actual pipeline that shipped the song** — every prompt, every config, every script, every README, every render setting that was used to make the released video. Fork it, plug your own song idea into the same workflow, and ship a finished music video on the same path.
 
-> One story, one open production folder. **Methodology over output.**
+About the song: **Lapua Jonne!** is a roots reggae track about a 17-year-old Finnish *jonne* (slang for a small-town teenage moped kid) revving his tuned 80cc PV-Suzuki on the old VR railyard in Lapua, next to a derelict cartridge factory. Same restless Ostrobothnian spirit as the 1800s *puukkojunkkarit* knife-fighters — only the throttle has replaced the blade.
+
+> A real release. A real pipeline. Both shipped publicly.
 
 ---
 
@@ -140,7 +142,7 @@ Cursor functions in this project as:
 - **Multimodal coordination hub** — image prompts → reference images → Seedance video prompts → Resolve cut decisions, all chained through one workspace with no manual round-trips
 - **Public, livestreamed engineering workspace** — broadcast openly on [kick.com/politrukki](https://kick.com/politrukki) so the workflow can be observed end-to-end, in real time, by anyone
 
-> The methodology is the artifact. The song is just the proof that the methodology works.
+> The song ships. The pipeline ships with it. The next release uses the same machinery.
 
 ---
 
@@ -157,7 +159,7 @@ That coordination problem is what Cursor solves for this project. In concrete te
 - **Architecture planning that survives the project** — instead of "vibes engineering", the pipeline ships as documented, repeatable, fork-able infrastructure
 - **Public AI-assisted engineering workflows** — the live builds on Kick demonstrate exactly *how* a real Cursor-driven production looks, in real time, in front of an audience
 
-This project is, intentionally, **less about one music video and more about a case study in AI-native production workflow**: the song is the deliverable, but the methodology is the artifact, and Cursor is the substrate that makes the methodology possible.
+Cursor is what turns a single creator into a full production house. The song ships, the pipeline that shipped it ships with it, and the next track uses the same machinery — at the same quality, in roughly the same time. **This is a working production system, not an experiment.**
 
 ---
 

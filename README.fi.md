@@ -22,13 +22,15 @@
 
 ## Mistä on kyse
 
-Tämä repo on **julkinen case study AI-natiivista tuotantoputkesta**: miten yksi tekijä voi ajaa kokonaisen multimodaalisen AI-tuotannon päästä päähän siten, että **Cursor toimii orkestraatiokerroksena** ja Claude, ChatGPT, ElevenLabs, FocalML Seedance ja DaVinci Resolve toimivat suoritusmoottoreina.
+**Lapua Jonne!** on ensimmäinen musiikkivideo, joka shipattiin Politrukki Liven tuotantoputkella — **toimivalla AI-natiivilla tuotantojärjestelmällä**, joka vie yhden tekijän biisi-ideasta julkaistuun, monikanavaiseen julkaisuun ilman studiota, ilman bändiä ja ilman kuvauskunnaa.
 
-Konkreettinen lopputuote on yksi valmis musiikkivideo. Varsinainen arvokas asia on kuitenkin **metodologia** — jokainen prompti, jokainen konfiguraatio, jokainen skripti, jokainen README ja jokainen render-asetus on avoin ja uudelleentuotettavissa.
+**Cursor on orkestraatiokerros.** Claude, ChatGPT, ElevenLabs, FocalML Seedance ja DaVinci Resolve ovat suoritusmoottoreita sen päällä. Tämän yhdistelmän ansiosta yhden hengen operaatio shippaa täydellä tuotantolaadulla — audio, video, stemmit, master ja alustakohtaiset toimitustiedostot.
 
-**Lapua Jonne!** on roots reggae -biisi 17-vuotiaasta jonnesta, joka huudattaa viritettyä 80cc PV-Suzukiaan Lapuan VR-parkilla vanhan patruunatehtaan kupeessa. Sama Etelä-Pohjanmaan henki kuin 1800-luvun puukkojunkkareilla — vain kaasukahva on vaihtanut puukon paikan.
+Tämä repo on **se konkreettinen putki, joka shippasi biisin** — jokainen prompti, jokainen konfiguraatio, jokainen skripti, jokainen README ja jokainen render-asetus, joilla julkaistu video tehtiin. Forkkaa, kytke oma biisi-ideasi samaan workflowhun ja shippaa valmis musiikkivideo samalla polulla.
 
-> Yksittäinen tarina, avoin tuotantokansio. **Metodologia ennen lopputuotetta.**
+Itse biisistä: **Lapua Jonne!** on roots reggae -biisi 17-vuotiaasta jonnesta, joka huudattaa viritettyä 80cc PV-Suzukiaan Lapuan VR-parkilla vanhan patruunatehtaan kupeessa. Sama Etelä-Pohjanmaan henki kuin 1800-luvun puukkojunkkareilla — vain kaasukahva on vaihtanut puukon paikan.
+
+> Aito julkaisu. Aito putki. Molemmat julki.
 
 ---
 
@@ -140,7 +142,7 @@ Cursorin rooli tässä projektissa:
 - **Multimodaalinen koordinointi-hub** — image promptit → referenssikuvat → Seedance-videopromptit → Resolve-leikkauspäätökset, kaikki ketjutettuna yhden työtilan läpi ilman manuaalisia round-trippejä
 - **Julkinen, livestreamattu engineering-työtila** — lähetetään avoimesti [kick.com/politrukki](https://kick.com/politrukki) -kanavalla, jotta workflow on havaittavissa päästä päähän reaaliajassa kenelle tahansa
 
-> Metodologia on varsinainen artefakti. Biisi on vain todiste siitä, että metodologia toimii.
+> Biisi shippaa. Putki shippaa sen mukana. Seuraava julkaisu käyttää samaa koneistoa.
 
 ---
 
@@ -157,7 +159,7 @@ Sen koordinaatio-ongelman Cursor ratkaisee tässä projektissa. Konkreettisesti:
 - **Arkkitehtuurisuunnittelu joka säilyy projektin yli** — "vibes engineeringin" sijaan putki toimitetaan dokumentoituna, toistettavana, forkattavana infrastruktuurina
 - **Julkiset AI-avusteiset engineering-workflowt** — Kickin live-buildit näyttävät tarkalleen *miten* Cursor-vetoinen tuotanto näyttää reaaliajassa yleisön edessä
 
-Tämä projekti on tarkoituksellisesti **vähemmän "yksi musiikkivideo" ja enemmän case study AI-natiivista tuotantotyökaluputkesta**: biisi on lopputuote, mutta metodologia on artefakti, ja Cursor on se alusta joka tekee metodologian mahdolliseksi.
+Cursor tekee yhdestä tekijästä kokonaisen tuotantoyhtiön. Biisi shippaa, putki joka sen shippasi shippaa sen mukana, ja seuraava biisi käyttää samaa koneistoa — samalla laadulla, suunnilleen samassa ajassa. **Tämä on toimiva tuotantojärjestelmä, ei kokeilu.**
 
 ---
 
