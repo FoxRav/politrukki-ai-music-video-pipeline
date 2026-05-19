@@ -4,10 +4,11 @@
 
 # Politrukki — Lapua Jonne!
 
-### AI-musiikkivideoputki ideasta YouTube-julkaisuun · 9 vaihetta · 1 biisi · 24 klippiä
+### AI-natiivi musiikkivideoputki · orkestroitu päästä päähän Cursorissa · ideasta YouTube-julkaisuun
 
 [![Status](https://img.shields.io/badge/status-released-39ff8a)]()
-[![Stack](https://img.shields.io/badge/stack-Claude%20·%20ElevenLabs%20·%20FocalML%20·%20DaVinci-00e5ff)]()
+[![Orchestrated in Cursor](https://img.shields.io/badge/orchestrated%20in-Cursor-8957e5)](https://cursor.com)
+[![Stack](https://img.shields.io/badge/stack-Cursor%20·%20Claude%20·%20ElevenLabs%20·%20FocalML%20·%20DaVinci-00e5ff)]()
 [![AI Content](https://img.shields.io/badge/AI%20generated-disclosed-ff2bd6)]()
 [![Made in](https://img.shields.io/badge/made%20in-Lapua%2C%20Finland-ffb627)]()
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)](LICENSE)
@@ -21,11 +22,13 @@
 
 ## Mistä on kyse
 
+Tämä repo on **julkinen case study AI-natiivista tuotantoputkesta**: miten yksi tekijä voi ajaa kokonaisen multimodaalisen AI-tuotannon päästä päähän siten, että **Cursor toimii orkestraatiokerroksena** ja Claude, ChatGPT, ElevenLabs, FocalML Seedance ja DaVinci Resolve toimivat suoritusmoottoreina.
+
+Konkreettinen lopputuote on yksi valmis musiikkivideo. Varsinainen arvokas asia on kuitenkin **metodologia** — jokainen prompti, jokainen konfiguraatio, jokainen skripti, jokainen README ja jokainen render-asetus on avoin ja uudelleentuotettavissa.
+
 **Lapua Jonne!** on roots reggae -biisi 17-vuotiaasta jonnesta, joka huudattaa viritettyä 80cc PV-Suzukiaan Lapuan VR-parkilla vanhan patruunatehtaan kupeessa. Sama Etelä-Pohjanmaan henki kuin 1800-luvun puukkojunkkareilla — vain kaasukahva on vaihtanut puukon paikan.
 
-Tämä repo dokumentoi koko tuotannon: **ideasta → lyriikoista → audiosta → storyboardista → videoklipistä → editoinnista → julkaisuun**. Tavoitteena näyttää konkreettisesti miten yksi nykyaikainen AI-musiikkivideo rakennetaan alusta loppuun, mitkä työkalut toimivat mihinkin, ja mitä promptit oikeasti sisältävät.
-
-> Yksittäinen tarina, avoin tuotantokansio.
+> Yksittäinen tarina, avoin tuotantokansio. **Metodologia ennen lopputuotetta.**
 
 ---
 
@@ -85,14 +88,16 @@ Jokaisessa vaihekansiossa on oma `README.md`, jossa on tehtävälista ja ohje ju
 
 | Rooli | Työkalu |
 | --- | --- |
-| Käsikirjoitus & promptit | `Claude` |
-| Referenssikuvat | `ChatGPT` (image generation) |
+| **Workflow-orkestraatio · kerros jonka päällä koko projekti pyörii** | **`Cursor` — AI-natiivi engineering-työtila** |
+| Käsikirjoitus & promptit | `Claude` (Anthropic · käytetään Cursorin sisällä) |
+| Referenssikuvat | `ChatGPT` (OpenAI · image generation) |
 | Musiikin generointi | `ElevenLabs Music` |
 | Video (image-to-video) | `FocalML Seedance 2.0` |
 | Stem-erottelu | `Audacity` + `OpenVINO` (Demucs v4) |
 | Codec-konversio Resolveen | `FFmpeg` (DNxHR / ProRes) |
 | **Editointi · audio-mix · color · master · deliverables** | **`DaVinci Resolve` — koko paketin kasaaja** |
 | Julkaisu | `YouTube Studio` · `TikTok` · `Instagram Reels` |
+| Live-lähetys | `OBS Studio` · `Kick` |
 
 ---
 
@@ -118,6 +123,41 @@ Aitoja kuvakaappauksia tuotannosta. Putki ei ole teoriaa — jokainen yllä list
     </td>
   </tr>
 </table>
+
+---
+
+## Workflow-orkestraatio
+
+Koko päästä päähän -tuotanto pyörii **Cursorin** läpi yhtenä orkestraatiokerroksena. Jokainen putken vaihe — ensimmäisestä ideasta renderöityihin lopputuotteisiin asti — kulkee Cursorin kautta, ja Kickin live-buildit ovat käytännössä screencast-tyylinen näkymä Cursorista tekemässä työtä.
+
+Cursorin rooli tässä projektissa:
+
+- **Workflow-orkestraatiokerros** — kaikki 9 vaihekansiota, jokainen prompti, jokainen skripti, jokainen README ja jokainen konfiguraatio asuvat samassa työtilassa, ja Claude Cursorin sisällä näkee ne kaikki yhtä aikaa
+- **AI-avusteinen kirjoitusympäristö** — lyriikat, READMEt, promptit, ElevenLabsin composition plan -JSONit, YouTube-metadata, TikTok-tekstit, käsikirjoitus, lisenssitekstit
+- **Repon laajuinen kontekstimoottori** — Claude päättelee kaikkien 9 vaiheen yli yhtä aikaa, ei vain yhden avoimen tiedoston kannalta; tämä on se syy miksi "järjestelmästä" tulee yhtenäinen
+- **Tuotantoskriptauksen ympäristö** — FFmpeg-konversiot, Whisper-transkription glue, Demucs-stemmit, tiedostojen uudelleennimennit, prompti-promptilta -konsistenssitarkistukset
+- **Arkkitehtuuri & dokumentaatio -työkalu** — tämä README, kaksikielinen versio, arkkitehtuurikaavio, jokaisen vaiheen oma README, JSON-konfiguraatiot, `.gitignore`, lisenssi — kaikki kirjoitettu Cursorin sisällä
+- **Multimodaalinen koordinointi-hub** — image promptit → referenssikuvat → Seedance-videopromptit → Resolve-leikkauspäätökset, kaikki ketjutettuna yhden työtilan läpi ilman manuaalisia round-trippejä
+- **Julkinen, livestreamattu engineering-työtila** — lähetetään avoimesti [kick.com/politrukki](https://kick.com/politrukki) -kanavalla, jotta workflow on havaittavissa päästä päähän reaaliajassa kenelle tahansa
+
+> Metodologia on varsinainen artefakti. Biisi on vain todiste siitä, että metodologia toimii.
+
+---
+
+## Miksi Cursor
+
+Moderni AI-natiivi tuotanto **ei** ole sitä, että yksi malli saa promptin ja sitten painetaan render-nappia. Se on **monen mallin, monen tiedostomuodon, monen koodipolun ja monen ihmispäätöksen koordinointia** tuntien työn aikana — niin, että kaikki pysyy yhtenäisenä, uudelleentuotettavana ja näkyvänä.
+
+Sen koordinaatio-ongelman Cursor ratkaisee tässä projektissa. Konkreettisesti:
+
+- **Nopea iteraatio prompteille ja assetille** — Claude Opus 4.7 editorin sisällä, koko repon kontekstilla, ilman round-trippejä chat-UI:n ja tiedostojärjestelmän välillä
+- **Multimodaalinen workflow-koordinaatio** — teksti, JSON, skriptit, audio-metadata ja video-render-konfiguraatiot kaikki samassa työtilassa, samoilla pikanäppäimillä
+- **Repon laajuinen kontekstin ymmärtäminen** — Claude päättelee kaikkien 9 vaihekansion yli yhtä aikaa; tämä on syy siihen, miksi syntyy *järjestelmä* eikä pino irrallisia promptteja
+- **Tuotantoskriptaus pyynnöstä** — pienet mutta tuotantokriittiset työkalut (uudelleennimennit, JSON-validointi, transkriptio-glue, FFmpeg-eräajot) syntyvät sekunneissa, ei päivissä
+- **Arkkitehtuurisuunnittelu joka säilyy projektin yli** — "vibes engineeringin" sijaan putki toimitetaan dokumentoituna, toistettavana, forkattavana infrastruktuurina
+- **Julkiset AI-avusteiset engineering-workflowt** — Kickin live-buildit näyttävät tarkalleen *miten* Cursor-vetoinen tuotanto näyttää reaaliajassa yleisön edessä
+
+Tämä projekti on tarkoituksellisesti **vähemmän "yksi musiikkivideo" ja enemmän case study AI-natiivista tuotantotyökaluputkesta**: biisi on lopputuote, mutta metodologia on artefakti, ja Cursor on se alusta joka tekee metodologian mahdolliseksi.
 
 ---
 

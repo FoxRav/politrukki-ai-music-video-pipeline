@@ -4,10 +4,11 @@
 
 # Politrukki — Lapua Jonne!
 
-### End-to-end AI music video pipeline · 9 stages · 1 song · 24 clips · from idea to YouTube release
+### AI-native music video production workflow · orchestrated end-to-end in Cursor · from idea to YouTube release
 
 [![Status](https://img.shields.io/badge/status-released-39ff8a)]()
-[![Stack](https://img.shields.io/badge/stack-Claude%20·%20ElevenLabs%20·%20FocalML%20·%20DaVinci-00e5ff)]()
+[![Orchestrated in Cursor](https://img.shields.io/badge/orchestrated%20in-Cursor-8957e5)](https://cursor.com)
+[![Stack](https://img.shields.io/badge/stack-Cursor%20·%20Claude%20·%20ElevenLabs%20·%20FocalML%20·%20DaVinci-00e5ff)]()
 [![AI Content](https://img.shields.io/badge/AI%20generated-disclosed-ff2bd6)]()
 [![Made in](https://img.shields.io/badge/made%20in-Lapua%2C%20Finland-ffb627)]()
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)](LICENSE)
@@ -21,11 +22,13 @@
 
 ## About
 
+This repository is a **public case study in AI-native production workflow**: how one creator can run an entire multimodal AI production end-to-end with **Cursor as the orchestration layer** and Claude, ChatGPT, ElevenLabs, FocalML Seedance, and DaVinci Resolve as the execution engines.
+
+The concrete deliverable is one finished music video. The artifact, however, is the **methodology** — every prompt, every config, every script, every README, every render setting is open and reproducible.
+
 **Lapua Jonne!** is a roots reggae track about a 17-year-old Finnish *jonne* (slang for a small-town teenage moped kid) revving his tuned 80cc PV-Suzuki on the old VR railyard in Lapua, next to a derelict cartridge factory. Same restless Ostrobothnian spirit as the 1800s *puukkojunkkarit* knife-fighters — only the throttle has replaced the blade.
 
-This repository documents the full production: **idea → lyrics → audio → storyboard → video clips → editing → release**. The goal is to show, concretely and openly, how a modern AI music video is built end-to-end — which tools fit which step, what the prompts actually look like, and where the trade-offs are.
-
-> One story, one open production folder.
+> One story, one open production folder. **Methodology over output.**
 
 ---
 
@@ -85,7 +88,8 @@ Each stage folder has its own `README.md` with a checklist and a guide for execu
 
 | Role | Tool |
 | --- | --- |
-| Scriptwriting & prompts | `Claude` (Anthropic) |
+| **Workflow orchestration · the layer the whole project runs on** | **`Cursor` — AI-native engineering workspace** |
+| Scriptwriting & prompts | `Claude` (Anthropic · used inside Cursor) |
 | Reference imagery | `ChatGPT` (OpenAI · image generation) |
 | Music generation | `ElevenLabs Music` |
 | Video (image-to-video) | `FocalML Seedance 2.0` |
@@ -119,6 +123,41 @@ Real screenshots from the build. The pipeline isn't theoretical — every tool l
     </td>
   </tr>
 </table>
+
+---
+
+## Workflow orchestration
+
+This entire end-to-end production runs through **Cursor** as its single orchestration layer. Every stage of the pipeline — from the first idea to the rendered deliverables — touches Cursor, and the live build streams on Kick are literally a screencast of Cursor doing the work.
+
+Cursor functions in this project as:
+
+- **Workflow orchestration layer** — all 9 phase folders, every prompt, every script, every README, and every config sit in a single workspace, and Claude inside Cursor sees them all at once
+- **AI-assisted writing environment** — lyrics, READMEs, prompts, ElevenLabs composition plans (JSON), YouTube metadata, TikTok copy, screenplay, license texts
+- **Repository-wide context engine** — Claude reasons across all 9 phases simultaneously, not just one open file at a time; this is what makes the "system" coherent
+- **Production scripting environment** — FFmpeg conversion batches, Whisper transcription glue, Demucs stem runs, file renames, prompt-to-prompt consistency checks
+- **Architecture & documentation tool** — this README, the bilingual fork of it, the architecture diagram, the per-phase READMEs, the JSON configs, the `.gitignore`, the license — all authored inside Cursor
+- **Multimodal coordination hub** — image prompts → reference images → Seedance video prompts → Resolve cut decisions, all chained through one workspace with no manual round-trips
+- **Public, livestreamed engineering workspace** — broadcast openly on [kick.com/politrukki](https://kick.com/politrukki) so the workflow can be observed end-to-end, in real time, by anyone
+
+> The methodology is the artifact. The song is just the proof that the methodology works.
+
+---
+
+## Why Cursor
+
+Modern AI-native production is **not** about prompting one model and hitting render. It is about **coordinating many models, many file formats, many code paths, and many human decisions** across hours of work — and keeping it all consistent, reproducible, and visible.
+
+That coordination problem is what Cursor solves for this project. In concrete terms:
+
+- **Rapid iteration on prompts and assets** — Claude Opus 4.7 inside the editor, with the entire repo as context, instead of round-tripping between a chat UI and the filesystem
+- **Multimodal workflow coordination** — text, JSON, scripts, audio metadata, and video render configs all live in the same workspace, edited with the same shortcuts
+- **Repository-wide context understanding** — Claude reasons across all 9 phase folders simultaneously; this is what allows a *system* to emerge rather than a pile of disconnected prompts
+- **Production scripting on demand** — small but production-critical tools (renaming, JSON validation, transcription glue, FFmpeg batches) are generated in seconds, not days
+- **Architecture planning that survives the project** — instead of "vibes engineering", the pipeline ships as documented, repeatable, fork-able infrastructure
+- **Public AI-assisted engineering workflows** — the live builds on Kick demonstrate exactly *how* a real Cursor-driven production looks, in real time, in front of an audience
+
+This project is, intentionally, **less about one music video and more about a case study in AI-native production workflow**: the song is the deliverable, but the methodology is the artifact, and Cursor is the substrate that makes the methodology possible.
 
 ---
 
@@ -246,7 +285,7 @@ In exchange I can offer:
 
 ### Tools currently used in this pipeline
 
-`Anthropic Claude` · `OpenAI ChatGPT` · `ElevenLabs Music` · `FocalML Seedance 2.0` · `Blackmagic Design DaVinci Resolve` · `Audacity` · `OpenVINO` (Demucs v4) · `FFmpeg` · `OBS Studio` · `Kick` · `YouTube`
+**`Cursor`** *(workflow orchestration · the layer the whole project runs on)* · `Anthropic Claude` · `OpenAI ChatGPT` · `ElevenLabs Music` · `FocalML Seedance 2.0` · `Blackmagic Design DaVinci Resolve` · `Audacity` · `OpenVINO` (Demucs v4) · `FFmpeg` · `OBS Studio` · `Kick` · `YouTube`
 
 ### Get in touch
 
