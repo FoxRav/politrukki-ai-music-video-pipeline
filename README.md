@@ -90,7 +90,7 @@ Each stage folder has its own `README.md` with a checklist and a guide for execu
 
 | Role | Tool |
 | --- | --- |
-| **Workflow orchestration · the layer the whole project runs on** | **`Cursor` — AI-native engineering workspace** |
+| **Workflow orchestration · the layer the whole project runs on** | **`Cursor` — AI-native production workspace** |
 | Scriptwriting & prompts | `Claude` (Anthropic · used inside Cursor) |
 | Reference imagery | `ChatGPT` (OpenAI · image generation) |
 | Music generation | `ElevenLabs Music` |
@@ -140,7 +140,7 @@ Cursor functions in this project as:
 - **Production scripting environment** — FFmpeg conversion batches, Whisper transcription glue, Demucs stem runs, file renames, prompt-to-prompt consistency checks
 - **Architecture & documentation tool** — this README, the bilingual fork of it, the architecture diagram, the per-phase READMEs, the JSON configs, the `.gitignore`, the license — all authored inside Cursor
 - **Multimodal coordination hub** — image prompts → reference images → Seedance video prompts → Resolve cut decisions, all chained through one workspace with no manual round-trips
-- **Public, livestreamed engineering workspace** — broadcast openly on [kick.com/politrukki](https://kick.com/politrukki) so the workflow can be observed end-to-end, in real time, by anyone
+- **Public, livestreamed production workspace** — broadcast openly on [kick.com/politrukki](https://kick.com/politrukki) so the workflow can be observed end-to-end, in real time, by anyone
 
 > The song ships. The pipeline ships with it. The next release uses the same machinery.
 
@@ -157,7 +157,7 @@ That coordination problem is what Cursor solves for this project. In concrete te
 - **Repository-wide context understanding** — Claude reasons across all 9 phase folders simultaneously; this is what allows a *system* to emerge rather than a pile of disconnected prompts
 - **Production scripting on demand** — small but production-critical tools (renaming, JSON validation, transcription glue, FFmpeg batches) are generated in seconds, not days
 - **Architecture planning that survives the project** — instead of "vibes engineering", the pipeline ships as documented, repeatable, fork-able infrastructure
-- **Public AI-assisted engineering workflows** — the live builds on Kick demonstrate exactly *how* a real Cursor-driven production looks, in real time, in front of an audience
+- **Public, AI-assisted production workflows** — the live builds on Kick demonstrate exactly *how* a real Cursor-driven production looks, in real time, in front of an audience
 
 Cursor is what turns a single creator into a full production house. The song ships, the pipeline that shipped it ships with it, and the next track uses the same machinery — at the same quality, in roughly the same time. **This is a working production system, not an experiment.**
 
@@ -268,7 +268,15 @@ The YouTube release is flagged *Altered content* per YouTube's AI-content disclo
 
 ## Partnerships & sponsorship
 
-This pipeline is built on commercial AI tools. Production is documented **openly and publicly** — the code is on GitHub under CC BY-NC 4.0, the process is streamed live on Kick, and every tool that touches the work is named in this README and in the YouTube description of the released video.
+This pipeline is built on commercial AI tools. Production is documented **openly and publicly** — every prompt, config, README, screenplay, helper script, and publishing text that built the video lives on GitHub under CC BY-NC 4.0. The process itself is streamed live on Kick, and every tool that touches the work is named in this README and in the YouTube description of the released video.
+
+### Where we are today, and where API access would take us
+
+Right now, Cursor is the orchestration **workspace**: every prompt, config, README, schedule, and decision lives there, and Claude reasons across the whole repo. Some stages still require hopping out to a web UI (ElevenLabs Music, FocalML Seedance, YouTube Studio), and the coordination between them is human-driven through Cursor.
+
+The natural next step — given API access to the right tools — is to drive **every stage from inside Cursor directly via API calls**, turning the manual coordination layer into automated orchestration. This is a concrete, immediate area where a credit sponsorship or API partnership would have visible impact: on the public Kick streams, in this repository's helper scripts, and in the speed and consistency of every future release shipped on this pipeline.
+
+### What I'm open to
 
 If you represent one of the tools used here, you are welcome to reach out. I am open to:
 

@@ -90,7 +90,7 @@ Jokaisessa vaihekansiossa on oma `README.md`, jossa on tehtävälista ja ohje ju
 
 | Rooli | Työkalu |
 | --- | --- |
-| **Workflow-orkestraatio · kerros jonka päällä koko projekti pyörii** | **`Cursor` — AI-natiivi engineering-työtila** |
+| **Workflow-orkestraatio · kerros jonka päällä koko projekti pyörii** | **`Cursor` — AI-natiivi tuotantotyötila** |
 | Käsikirjoitus & promptit | `Claude` (Anthropic · käytetään Cursorin sisällä) |
 | Referenssikuvat | `ChatGPT` (OpenAI · image generation) |
 | Musiikin generointi | `ElevenLabs Music` |
@@ -140,7 +140,7 @@ Cursorin rooli tässä projektissa:
 - **Tuotantoskriptauksen ympäristö** — FFmpeg-konversiot, Whisper-transkription glue, Demucs-stemmit, tiedostojen uudelleennimennit, prompti-promptilta -konsistenssitarkistukset
 - **Arkkitehtuuri & dokumentaatio -työkalu** — tämä README, kaksikielinen versio, arkkitehtuurikaavio, jokaisen vaiheen oma README, JSON-konfiguraatiot, `.gitignore`, lisenssi — kaikki kirjoitettu Cursorin sisällä
 - **Multimodaalinen koordinointi-hub** — image promptit → referenssikuvat → Seedance-videopromptit → Resolve-leikkauspäätökset, kaikki ketjutettuna yhden työtilan läpi ilman manuaalisia round-trippejä
-- **Julkinen, livestreamattu engineering-työtila** — lähetetään avoimesti [kick.com/politrukki](https://kick.com/politrukki) -kanavalla, jotta workflow on havaittavissa päästä päähän reaaliajassa kenelle tahansa
+- **Julkinen, livestreamattu tuotantotyötila** — lähetetään avoimesti [kick.com/politrukki](https://kick.com/politrukki) -kanavalla, jotta workflow on havaittavissa päästä päähän reaaliajassa kenelle tahansa
 
 > Biisi shippaa. Putki shippaa sen mukana. Seuraava julkaisu käyttää samaa koneistoa.
 
@@ -157,7 +157,7 @@ Sen koordinaatio-ongelman Cursor ratkaisee tässä projektissa. Konkreettisesti:
 - **Repon laajuinen kontekstin ymmärtäminen** — Claude päättelee kaikkien 9 vaihekansion yli yhtä aikaa; tämä on syy siihen, miksi syntyy *järjestelmä* eikä pino irrallisia promptteja
 - **Tuotantoskriptaus pyynnöstä** — pienet mutta tuotantokriittiset työkalut (uudelleennimennit, JSON-validointi, transkriptio-glue, FFmpeg-eräajot) syntyvät sekunneissa, ei päivissä
 - **Arkkitehtuurisuunnittelu joka säilyy projektin yli** — "vibes engineeringin" sijaan putki toimitetaan dokumentoituna, toistettavana, forkattavana infrastruktuurina
-- **Julkiset AI-avusteiset engineering-workflowt** — Kickin live-buildit näyttävät tarkalleen *miten* Cursor-vetoinen tuotanto näyttää reaaliajassa yleisön edessä
+- **Julkiset, AI-avusteiset tuotantotyönkulut** — Kickin live-buildit näyttävät tarkalleen *miten* Cursor-vetoinen tuotanto näyttää reaaliajassa yleisön edessä
 
 Cursor tekee yhdestä tekijästä kokonaisen tuotantoyhtiön. Biisi shippaa, putki joka sen shippasi shippaa sen mukana, ja seuraava biisi käyttää samaa koneistoa — samalla laadulla, suunnilleen samassa ajassa. **Tämä on toimiva tuotantojärjestelmä, ei kokeilu.**
 
