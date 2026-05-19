@@ -96,6 +96,31 @@ Jokaisessa vaihekansiossa on oma `README.md`, jossa on tehtävälista ja ohje ju
 
 ---
 
+## Työkalut käytössä
+
+Aitoja kuvakaappauksia tuotannosta. Putki ei ole teoriaa — jokainen yllä listattu työkalu on hands-on käytössä.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="html/screenshots/cursor-claude-opus.png"><img src="html/screenshots/cursor-claude-opus.png" alt="Cursor IDE jossa Claude Opus 4.7 aktiivinen" /></a>
+      <br/>
+      <strong>Cursor IDE  ·  Claude Opus 4.7</strong>
+      <br/>
+      <sub>Lyriikat, promptit, READMEt, repon rakenne ja Resolve-ohjeet kirjoitettu yhdessä Claudin kanssa.</sub>
+    </td>
+    <td width="50%" align="center">
+      <a href="html/screenshots/focalml-seedance.png"><img src="html/screenshots/focalml-seedance.png" alt="FocalML Seedance 2.0 image-to-video -generointi" /></a>
+      <br/>
+      <strong>FocalML  ·  Seedance 2.0</strong>
+      <br/>
+      <sub>Image-to-video -generointi kaikille 24 klipille, natiivin äänen ja lip-syncin kanssa.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## DaVinci Resolve — koko tuotannon kasaaja
 
 Resolve ei ole vain editori vaan koko paketin **viimeistelijä**: kaikki AI-syötteet (24 video­klippiä, 1 master-audio, 4 stemmiä, Whisper-transkriptiot) tuodaan yhdelle aikajanalle ja säädetään sekuntilleen kohdalleen.

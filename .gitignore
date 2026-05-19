@@ -14,6 +14,9 @@ tmp/
 *.tmp
 *.log
 
+# Paikallinen referenssikuvakirjasto (showcase-kuvat kopioidaan erikseen html/screenshots/)
+Ref_Pics/
+
 # 03_audio — generoitu audio (master, mix, stems, vokaalit, instrumentaali)
 03_audio/voice/*
 03_audio/instrumentaali/*

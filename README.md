@@ -97,6 +97,31 @@ Each stage folder has its own `README.md` with a checklist and a guide for execu
 
 ---
 
+## Tools in action
+
+Real screenshots from the build. The pipeline isn't theoretical — every tool listed above is driving the work hands-on.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="html/screenshots/cursor-claude-opus.png"><img src="html/screenshots/cursor-claude-opus.png" alt="Cursor IDE running Claude Opus 4.7" /></a>
+      <br/>
+      <strong>Cursor IDE  ·  Claude Opus 4.7</strong>
+      <br/>
+      <sub>Lyrics, prompts, READMEs, repo structure, and Resolve guidance all written together with Claude.</sub>
+    </td>
+    <td width="50%" align="center">
+      <a href="html/screenshots/focalml-seedance.png"><img src="html/screenshots/focalml-seedance.png" alt="FocalML Seedance 2.0 image-to-video generation" /></a>
+      <br/>
+      <strong>FocalML  ·  Seedance 2.0</strong>
+      <br/>
+      <sub>Image-to-video generation for all 24 clips, with native audio and lip-sync.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## DaVinci Resolve — where it all comes together
 
 Resolve isn't just an editor — it's the **finisher** for the entire package. Every AI-generated asset (24 video clips, 1 master audio, 4 stems, Whisper transcriptions) lands on a single timeline and is dialed in to the second.
