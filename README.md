@@ -7,6 +7,7 @@
 ### AI-native music video production workflow · orchestrated end-to-end in Cursor · from idea to YouTube release
 
 [![Status](https://img.shields.io/badge/status-released-39ff8a)]()
+[![Pipeline](https://img.shields.io/badge/pipeline-v1%20·%20evolving-58a6ff)]()
 [![Orchestrated in Cursor](https://img.shields.io/badge/orchestrated%20in-Cursor-8957e5)](https://cursor.com)
 [![Stack](https://img.shields.io/badge/stack-Cursor%20·%20Claude%20·%20ElevenLabs%20·%20FocalML%20·%20DaVinci-00e5ff)]()
 [![AI Content](https://img.shields.io/badge/AI%20generated-disclosed-ff2bd6)]()
