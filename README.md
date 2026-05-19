@@ -27,9 +27,17 @@ Tämä repo dokumentoi koko tuotannon: **ideasta → lyriikoista → audiosta �
 
 ## Kuuntele & katso
 
+<div align="center">
+
+[![Katso YouTubessa — Politrukki: Lapua Jonne!](https://img.youtube.com/vi/dnFbXpW00kM/maxresdefault.jpg)](https://www.youtube.com/watch?v=dnFbXpW00kM)
+
+**▶ [Katso YouTubessa](https://www.youtube.com/watch?v=dnFbXpW00kM)**
+
+</div>
+
 | | |
 | --- | --- |
-| YouTube | *lisätään kun video julki* |
+| YouTube | [youtube.com/watch?v=dnFbXpW00kM](https://www.youtube.com/watch?v=dnFbXpW00kM) |
 | Lyriikat | [`02_lyriikat/lyriikat_final.md`](02_lyriikat/lyriikat_final.md) |
 | YouTube-metadata (otsikko/kuvaus/tagit) | [`09_julkaisu/metadata.md`](09_julkaisu/metadata.md) |
 | Live-progress-dashboard (avaa selaimessa) | [`html/checklist.html`](html/checklist.html) |
