@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)file:///F:/-DEV-/85.Kick_0001/Biisi1/html/checklist.html -->
+<html lang="fi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Politrukki — AI Music Video Pipeline</title>
+<style>
+  :root {
+    --bg-deep: #050810;
+    --bg-panel: rgba(10, 18, 32, 0.78);
+    --neon-cyan: #00e5ff;
+    --neon-magenta: #ff2bd6;
+    --neon-amber: #ffb627;
+    --neon-green: #39ff8a;
+    --text-primary: #e8f4ff;
+    --text-dim: #6c8aa8;
+    --text-mute: #3d5878;
+    --border-glow: rgba(0, 229, 255, 0.25);
+    --done-glow: rgba(57, 255, 138, 0.4);
+    --active-glow: rgba(255, 43, 214, 0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background:
+      radial-gradient(ellipse at top left, rgba(0, 229, 255, 0.08), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(255, 43, 214, 0.06), transparent 50%),
+      linear-gradient(180deg, #030610 0%, #0a1428 100%);
+    color: var(--text-primary);
+    font-family: 'Courier New', 'Consolas', monospace;
+    min-height: 100vh;
+    padding: 28px 36px;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 229, 255, 0.015) 3px,
+      transparent 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* HEADER */
+  header {
+    border: 1px solid var(--border-glow);
+    background: var(--bg-panel);
+    padding: 20px 28px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--neon-cyan), var(--neon-magenta));
+    box-shadow: 0 0 12px var(--neon-cyan);
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--text-primary), var(--neon-magenta));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: rgba(255, 43, 60, 0.15);
+    border: 1px solid #ff2b3c;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    color: #ff5566;
+  }
+
+  .live-badge .dot {
+    width: 8px; height: 8px;
+    background: #ff2b3c;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px #ff2b3c; }
+    50% { opacity: 0.4; box-shadow: 0 0 2px #ff2b3c; }
+  }
+
+  .mission {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 900px;
+    border-left: 2px solid var(--neon-amber);
+    padding-left: 14px;
+    margin-top: 8px;
+  }
+
+  .mission strong {
+    color: var(--neon-amber);
+  }
+
+  /* PROGRESS BAR */
+  .progress-section {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(108, 138, 168, 0.2);
+  }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .progress-label {
+    color: var(--text-dim);
+  }
+
+  .progress-stats {
+    color: var(--neon-cyan);
+    font-weight: bold;
+  }
+
+  .progress-bar {
+    height: 14px;
+    background: rgba(108, 138, 168, 0.1);
+    border: 1px solid var(--border-glow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-cyan) 0%, var(--neon-green) 100%);
+    width: 0%;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 14px var(--done-glow);
+    position: relative;
+  }
+
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(255, 255, 255, 0.1) 8px,
+      rgba(255, 255, 255, 0.1) 16px
+    );
+    animation: stripeMove 1s linear infinite;
+  }
+
+  @keyframes stripeMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 16px 0; }
+  }
+
+  /* PHASES */
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+  }
+
+  .phase {
+    background: var(--bg-panel);
+    border: 1px solid rgba(108, 138, 168, 0.15);
+    padding: 18px 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .phase.completed {
+    border-color: rgba(57, 255, 138, 0.4);
+    background: rgba(57, 255, 138, 0.04);
+  }
+
+  .phase.active {
+    border-color: var(--neon-magenta);
+    box-shadow: 0 0 24px var(--active-glow);
+    animation: activeBorder 2s ease-in-out infinite;
+  }
+
+  @keyframes activeBorder {
+    0%, 100% { box-shadow: 0 0 24px var(--active-glow); }
+    50% { box-shadow: 0 0 12px var(--active-glow); }
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(108, 138, 168, 0.2);
+  }
+
+  .phase-number {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    min-width: 40px;
+    text-shadow: 0 0 8px var(--neon-cyan);
+  }
+
+  .phase.completed .phase-number {
+    color: var(--neon-green);
+    text-shadow: 0 0 8px var(--neon-green);
+  }
+
+  .phase.active .phase-number {
+    color: var(--neon-magenta);
+    text-shadow: 0 0 8px var(--neon-magenta);
+  }
+
+  .phase-title {
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+
+  .phase-tool {
+    font-size: 10px;
+    color: var(--text-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--text-mute);
+  }
+
+  .tasks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .task:hover {
+    background: rgba(0, 229, 255, 0.05);
+  }
+
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--text-dim);
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+    margin-top: 1px;
+  }
+
+  .task.done .checkbox {
+    background: var(--neon-green);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 8px var(--done-glow);
+  }
+
+  .task.done .checkbox::after {
+    content: '✓';
+    position: absolute;
+    inset: 0;
+    color: var(--bg-deep);
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .task.done .task-text {
+    color: var(--text-mute);
+    text-decoration: line-through;
+  }
+
+  .task-text {
+    flex: 1;
+    color: var(--text-primary);
+  }
+
+  /* FOOTER */
+  footer {
+    margin-top: 24px;
+    padding: 14px 24px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-glow);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .tools-stack {
+    color: var(--text-dim);
+  }
+
+  .tools-stack span {
+    color: var(--neon-cyan);
+    margin: 0 4px;
+  }
+
+  .reset-btn {
+    background: transparent;
+    border: 1px solid var(--text-mute);
+    color: var(--text-mute);
+    padding: 6px 14px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .reset-btn:hover {
+    border-color: var(--neon-magenta);
+    color: var(--neon-magenta);
+  }
+
+  .timestamp {
+    color: var(--text-mute);
+    font-size: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="brand">
+      <h1>POLITRUKKI</h1>
+      <span class="live-badge"><span class="dot"></span>LIVE BUILD</span>
+    </div>
+    <p class="mission">
+      <strong>MISSIO:</strong> Rakennetaan AI-musiikkivideo ideasta julkaisuun livestream-aikana.
+      Stack: <strong>Claude</strong> (käsikirjoitus) → <strong>ElevenLabs</strong> (audio) →
+      <strong>FocalML</strong> (video) → <strong>Audacity/OpenVINO</strong> (stems) →
+      <strong>DaVinci Resolve</strong> (editointi) →
+      <strong>YouTube Politrukki Live</strong> (julkaisu).
+    </p>
+
+    <div class="progress-section">
+      <div class="progress-meta">
+        <span class="progress-label">Pipeline Progress</span>
+        <span class="progress-stats" id="progressStats">17 / 43 · 40%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 40%;"></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="phases" id="phases"><div class="phase completed">
+        <div class="phase-header">
+          <div class="phase-number">01</div>
+          <div class="phase-title">Ideointi &amp; Konsepti</div>
+          <div class="phase-tool">Claude / Brainstorm</div>
+        </div>
+        <ul class="tasks">
+          <li class="task done" data-key="p0_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Biisin teema ja kärki päätetty</span>
+          </li>
+        
+          <li class="task done" data-key="p0_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Genre ja tunnelma määritelty</span>
+          </li>
+        
+          <li class="task done" data-key="p0_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Kohdeyleisö ja tyylisuunta lukittu</span>
+          </li>
+        
+          <li class="task done" data-key="p0_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Visuaalinen mood-board / referenssit kasassa</span>
+          </li>
+        </ul>
+      </div><div class="phase completed">
+        <div class="phase-header">
+          <div class="phase-number">02</div>
+          <div class="phase-title">Lyriikat &amp; Rakenne</div>
+          <div class="phase-tool">Claude</div>
+        </div>
+        <ul class="tasks">
+          <li class="task done" data-key="p1_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Biisin rakenne (intro/verse/chorus/bridge/outro)</span>
+          </li>
+        
+          <li class="task done" data-key="p1_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Säkeistöjen lyriikat kirjoitettu</span>
+          </li>
+        
+          <li class="task done" data-key="p1_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Kertosäkeen koukku viilattu</span>
+          </li>
+        
+          <li class="task done" data-key="p1_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Lopullinen lyriikkaversio hyväksytty</span>
+          </li>
+        </ul>
+      </div><div class="phase completed">
+        <div class="phase-header">
+          <div class="phase-number">03</div>
+          <div class="phase-title">Audio &amp; Laulu</div>
+          <div class="phase-tool">ElevenLabs</div>
+        </div>
+        <ul class="tasks">
+          <li class="task done" data-key="p2_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Äänimalli / voice valittu</span>
+          </li>
+        
+          <li class="task done" data-key="p2_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Instrumentaali / musiikkipohja generoitu</span>
+          </li>
+        
+          <li class="task done" data-key="p2_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Laulu generoitu lyriikoista</span>
+          </li>
+        
+          <li class="task done" data-key="p2_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Audio-mixaus ja master valmis</span>
+          </li>
+        
+          <li class="task done" data-key="p2_t4">
+            <div class="checkbox"></div>
+            <span class="task-text">Lopullinen audiotiedosto exportattu (WAV/MP3)</span>
+          </li>
+        </ul>
+      </div><div class="phase completed">
+        <div class="phase-header">
+          <div class="phase-number">04</div>
+          <div class="phase-title">Visuaalinen Käsikirjoitus</div>
+          <div class="phase-tool">Claude / Storyboard</div>
+        </div>
+        <ul class="tasks">
+          <li class="task done" data-key="p3_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Shot list biisin rakenteen mukaan</span>
+          </li>
+        
+          <li class="task done" data-key="p3_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Promptit per klippi kirjoitettu</span>
+          </li>
+        
+          <li class="task done" data-key="p3_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Visuaalinen tyyli ja jatkuvuus määritelty</span>
+          </li>
+        
+          <li class="task done" data-key="p3_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Käsikirjoitus lukittu tuotantoon</span>
+          </li>
+        </ul>
+      </div><div class="phase active">
+        <div class="phase-header">
+          <div class="phase-number">05</div>
+          <div class="phase-title">Videoklippien Generointi</div>
+          <div class="phase-tool">FocalML</div>
+        </div>
+        <ul class="tasks">
+          <li class="task " data-key="p4_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Kaikki promptit syötetty FocalML:ään</span>
+          </li>
+        
+          <li class="task " data-key="p4_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Klipit generoitu</span>
+          </li>
+        
+          <li class="task " data-key="p4_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Heikot klipit regeneroitu</span>
+          </li>
+        
+          <li class="task " data-key="p4_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Hyväksytyt klipit ladattu paikalliseen kansioon</span>
+          </li>
+        </ul>
+      </div><div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">06</div>
+          <div class="phase-title">Decode &amp; Konversio</div>
+          <div class="phase-tool">Oma repo / FFmpeg</div>
+        </div>
+        <ul class="tasks">
+          <li class="task " data-key="p5_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Decode-skripti ajettu (DaVinci-yhteensopiva codec)</span>
+          </li>
+        
+          <li class="task " data-key="p5_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Tiedostonimet ja kansiorakenne järjestetty</span>
+          </li>
+        
+          <li class="task " data-key="p5_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Klipit verifioitu DaVinci-importtiin</span>
+          </li>
+        </ul>
+      </div><div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">07</div>
+          <div class="phase-title">Stem Separation</div>
+          <div class="phase-tool">Audacity · OpenVINO</div>
+        </div>
+        <ul class="tasks">
+          <li class="task " data-key="p6_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Master-ääniraita tuotu Audacityyn</span>
+          </li>
+        
+          <li class="task " data-key="p6_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">OpenVINO Music Separation ajettu (Demucs v4)</span>
+          </li>
+        
+          <li class="task " data-key="p6_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Vocals-raita erotettu ja exportattu</span>
+          </li>
+        
+          <li class="task " data-key="p6_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Drums-raita erotettu ja exportattu</span>
+          </li>
+        
+          <li class="task " data-key="p6_t4">
+            <div class="checkbox"></div>
+            <span class="task-text">Bass-raita erotettu ja exportattu</span>
+          </li>
+        
+          <li class="task " data-key="p6_t5">
+            <div class="checkbox"></div>
+            <span class="task-text">Other-raita erotettu ja exportattu</span>
+          </li>
+        
+          <li class="task " data-key="p6_t6">
+            <div class="checkbox"></div>
+            <span class="task-text">4 stem-raitaa nimetty ja valmiina DaVinciin</span>
+          </li>
+        </ul>
+      </div><div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">08</div>
+          <div class="phase-title">Editointi &amp; Koonti</div>
+          <div class="phase-tool">DaVinci Resolve</div>
+        </div>
+        <ul class="tasks">
+          <li class="task " data-key="p7_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Projekti luotu, asetukset (resoluutio, fps) säädetty</span>
+          </li>
+        
+          <li class="task " data-key="p7_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Audio synkattu timelinelle</span>
+          </li>
+        
+          <li class="task " data-key="p7_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Klipit leikattu rytmiin</span>
+          </li>
+        
+          <li class="task " data-key="p7_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">Siirtymät ja efektit lisätty</span>
+          </li>
+        
+          <li class="task " data-key="p7_t4">
+            <div class="checkbox"></div>
+            <span class="task-text">Color grading tehty</span>
+          </li>
+        
+          <li class="task " data-key="p7_t5">
+            <div class="checkbox"></div>
+            <span class="task-text">Lopputekstit / brändäys lisätty</span>
+          </li>
+        
+          <li class="task " data-key="p7_t6">
+            <div class="checkbox"></div>
+            <span class="task-text">Final render exportattu (MP4 1080p/4K)</span>
+          </li>
+        </ul>
+      </div><div class="phase">
+        <div class="phase-header">
+          <div class="phase-number">09</div>
+          <div class="phase-title">Julkaisu</div>
+          <div class="phase-tool">YouTube · Politrukki Live</div>
+        </div>
+        <ul class="tasks">
+          <li class="task " data-key="p8_t0">
+            <div class="checkbox"></div>
+            <span class="task-text">Thumbnail tehty</span>
+          </li>
+        
+          <li class="task " data-key="p8_t1">
+            <div class="checkbox"></div>
+            <span class="task-text">Otsikko, kuvaus ja tagit kirjoitettu</span>
+          </li>
+        
+          <li class="task " data-key="p8_t2">
+            <div class="checkbox"></div>
+            <span class="task-text">Video ladattu YouTubeen</span>
+          </li>
+        
+          <li class="task " data-key="p8_t3">
+            <div class="checkbox"></div>
+            <span class="task-text">End screen ja kortit asetettu</span>
+          </li>
+        
+          <li class="task " data-key="p8_t4">
+            <div class="checkbox"></div>
+            <span class="task-text">JULKAISTU 🎬</span>
+          </li>
+        </ul>
+      </div></div>
+
+  <footer>
+    <div class="tools-stack">
+      STACK:
+      <span>Claude</span>·<span>Cursor</span>·<span>OpenAI</span>·<span>ElevenLabs</span>·<span>FocalML</span>·<span>Audacity</span>·<span>DaVinci</span>
+    </div>
+    <div class="timestamp" id="timestamp">Updated: 17.05.2026 klo 15.48</div>
+    <button class="reset-btn" onclick="resetAll()">RESET ALL</button>
+  </footer>
+
+</div>
+
+<script>
+  const PIPELINE = [
+    {
+      title: "Ideointi & Konsepti",
+      tool: "Claude / Brainstorm",
+      tasks: [
+        "Biisin teema ja kärki päätetty",
+        "Genre ja tunnelma määritelty",
+        "Kohdeyleisö ja tyylisuunta lukittu",
+        "Visuaalinen mood-board / referenssit kasassa"
+      ]
+    },
+    {
+      title: "Lyriikat & Rakenne",
+      tool: "Claude",
+      tasks: [
+        "Biisin rakenne (intro/verse/chorus/bridge/outro)",
+        "Säkeistöjen lyriikat kirjoitettu",
+        "Kertosäkeen koukku viilattu",
+        "Lopullinen lyriikkaversio hyväksytty"
+      ]
+    },
+    {
+      title: "Audio & Laulu",
+      tool: "ElevenLabs",
+      tasks: [
+        "Äänimalli / voice valittu",
+        "Instrumentaali / musiikkipohja generoitu",
+        "Laulu generoitu lyriikoista",
+        "Audio-mixaus ja master valmis",
+        "Lopullinen audiotiedosto exportattu (WAV/MP3)"
+      ]
+    },
+    {
+      title: "Visuaalinen Käsikirjoitus",
+      tool: "Claude / Storyboard",
+      tasks: [
+        "Shot list biisin rakenteen mukaan",
+        "Promptit per klippi kirjoitettu",
+        "Visuaalinen tyyli ja jatkuvuus määritelty",
+        "Käsikirjoitus lukittu tuotantoon"
+      ]
+    },
+    {
+      title: "Videoklippien Generointi",
+      tool: "FocalML",
+      tasks: [
+        "Kaikki promptit syötetty FocalML:ään",
+        "Klipit generoitu",
+        "Heikot klipit regeneroitu",
+        "Hyväksytyt klipit ladattu paikalliseen kansioon"
+      ]
+    },
+    {
+      title: "Decode & Konversio",
+      tool: "Oma repo / FFmpeg",
+      tasks: [
+        "Decode-skripti ajettu (DaVinci-yhteensopiva codec)",
+        "Tiedostonimet ja kansiorakenne järjestetty",
+        "Klipit verifioitu DaVinci-importtiin"
+      ]
+    },
+    {
+      title: "Stem Separation",
+      tool: "Audacity · OpenVINO",
+      tasks: [
+        "Master-ääniraita tuotu Audacityyn",
+        "OpenVINO Music Separation ajettu (Demucs v4)",
+        "Vocals-raita erotettu ja exportattu",
+        "Drums-raita erotettu ja exportattu",
+        "Bass-raita erotettu ja exportattu",
+        "Other-raita erotettu ja exportattu",
+        "4 stem-raitaa nimetty ja valmiina DaVinciin"
+      ]
+    },
+    {
+      title: "Editointi & Koonti",
+      tool: "DaVinci Resolve",
+      tasks: [
+        "Projekti luotu, asetukset (resoluutio, fps) säädetty",
+        "Audio synkattu timelinelle",
+        "Klipit leikattu rytmiin",
+        "Siirtymät ja efektit lisätty",
+        "Color grading tehty",
+        "Lopputekstit / brändäys lisätty",
+        "Final render exportattu (MP4 1080p/4K)"
+      ]
+    },
+    {
+      title: "Julkaisu",
+      tool: "YouTube · Politrukki Live",
+      tasks: [
+        "Thumbnail tehty",
+        "Otsikko, kuvaus ja tagit kirjoitettu",
+        "Video ladattu YouTubeen",
+        "End screen ja kortit asetettu",
+        "JULKAISTU 🎬"
+      ]
+    }
+  ];
+
+  const STORAGE_KEY = 'politrukki_pipeline_v1';
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveState(state) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+      console.error('Save failed', e);
+    }
+  }
+
+  let state = loadState();
+
+  function taskKey(phaseIdx, taskIdx) {
+    return `p${phaseIdx}_t${taskIdx}`;
+  }
+
+  function render() {
+    const phasesEl = document.getElementById('phases');
+    phasesEl.innerHTML = '';
+
+    let totalTasks = 0;
+    let doneTasks = 0;
+    let activePhaseFound = false;
+
+    PIPELINE.forEach((phase, phaseIdx) => {
+      const phaseEl = document.createElement('div');
+      phaseEl.className = 'phase';
+
+      const phaseTotal = phase.tasks.length;
+      const phaseDone = phase.tasks.filter((_, i) => state[taskKey(phaseIdx, i)]).length;
+
+      totalTasks += phaseTotal;
+      doneTasks += phaseDone;
+
+      const isComplete = phaseDone === phaseTotal;
+      const isActive = !isComplete && !activePhaseFound && phaseDone > 0;
+      const isFirstIncomplete = !isComplete && !activePhaseFound && phaseDone === 0 && !PIPELINE.slice(0, phaseIdx).some((p, i) => p.tasks.some((_, j) => !state[taskKey(i, j)]));
+
+      if (isComplete) {
+        phaseEl.classList.add('completed');
+      } else if (isActive || isFirstIncomplete) {
+        phaseEl.classList.add('active');
+        activePhaseFound = true;
+      }
+
+      const num = String(phaseIdx + 1).padStart(2, '0');
+
+      const tasksHtml = phase.tasks.map((task, taskIdx) => {
+        const key = taskKey(phaseIdx, taskIdx);
+        const done = !!state[key];
+        return `
+          <li class="task ${done ? 'done' : ''}" data-key="${key}">
+            <div class="checkbox"></div>
+            <span class="task-text">${task}</span>
+          </li>
+        `;
+      }).join('');
+
+      phaseEl.innerHTML = `
+        <div class="phase-header">
+          <div class="phase-number">${num}</div>
+          <div class="phase-title">${phase.title}</div>
+          <div class="phase-tool">${phase.tool}</div>
+        </div>
+        <ul class="tasks">${tasksHtml}</ul>
+      `;
+
+      phasesEl.appendChild(phaseEl);
+    });
+
+    // Update progress
+    const pct = totalTasks > 0 ? Math.round((doneTasks / totalTasks) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressStats').textContent = `${doneTasks} / ${totalTasks} · ${pct}%`;
+
+    // Bind task clicks
+    document.querySelectorAll('.task').forEach(el => {
+      el.addEventListener('click', () => {
+        const key = el.dataset.key;
+        state[key] = !state[key];
+        saveState(state);
+        render();
+      });
+    });
+  }
+
+  function resetAll() {
+    if (confirm('Nollataanko KAIKKI rastit?')) {
+      state = {};
+      saveState(state);
+      render();
+    }
+  }
+
+  function updateTimestamp() {
+    const now = new Date();
+    const ts = now.toLocaleString('fi-FI', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+    document.getElementById('timestamp').textContent = `Updated: ${ts}`;
+  }
+
+  render();
+  updateTimestamp();
+  setInterval(updateTimestamp, 60000);
+</script>
+
+
+</body></html>

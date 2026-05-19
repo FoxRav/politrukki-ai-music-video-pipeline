@@ -1,0 +1,68 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Väliaikaiset
+tmp/
+*.tmp
+*.log
+
+# 03_audio — generoitu audio (master, mix, stems, vokaalit, instrumentaali)
+03_audio/voice/*
+03_audio/instrumentaali/*
+03_audio/vocals/*
+03_audio/mix/*
+03_audio/master/*
+
+# 05_video_klipit — raskaat raw + approved (mp4, png, jpg)
+05_video_klipit/raw/*
+05_video_klipit/approved/*
+
+# 06_decode — DaVinci-yhteensopivat konversio-outputit
+06_decode/davinci_ready/*
+
+# 07_stems — Demucs/OpenVINO audio + transkriptit
+07_stems/*.wav
+07_stems/*.flac
+07_stems/*.mp3
+07_stems/*.json
+07_stems/*.srt
+07_stems/*.tsv
+07_stems/*.txt
+07_stems/*.vtt
+
+# 08_editointi — DaVinci-projekti ja kaikki sen sisältö
+08_editointi/project/**
+08_editointi/exports/*
+08_editointi/final/*
+
+# 09_julkaisu — lopulliset videotiedostot ja subtitle-väliexportit
+09_julkaisu/*.mp4
+09_julkaisu/*.ttml
+09_julkaisu/thumbnail/*.png
+09_julkaisu/thumbnail/*.jpg
+09_julkaisu/thumbnail/*.psd
+
+# html — aputiedostot
+html/*.pdf
+
+# Generic raskaat ammattityökalujen lähdetiedostot
+*.psd
+*.aep
+*.prproj
+*.drp
+
+# Whitelist — säilytä eksplisiittisesti repossa
+!**/.gitkeep
+!**/README.md
+!06_decode/scripts/**
+!html/checklist.png
+!html/checklist.html
+!html/Politrukki*.html

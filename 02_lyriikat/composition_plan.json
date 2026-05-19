@@ -1,0 +1,361 @@
+{
+  "_meta": {
+    "title": "Lapua-Jonnet",
+    "language_lyrics": "fi",
+    "language_styles": "en",
+    "tempo_bpm": 85,
+    "time_signature": "4/4",
+    "key": "D minor",
+    "target_duration_ms": 235000,
+    "target_duration_human": "3:55",
+    "elevenlabs_model": "Music (composition plan)",
+    "notes": "Emotion and performance cues live in positive_local_styles / negative_local_styles per ElevenLabs Music convention. Inline [emotion] tags are NOT used here; those belong to v3 TTS only. Phonetic howls in lyrics imitate a tuned 80cc 2-stroke PV Suzuki engine."
+  },
+
+  "positive_global_styles": [
+    "roots reggae",
+    "deep dub bass",
+    "off-beat guitar skank on beats 2 and 4",
+    "Hammond organ bubbles",
+    "85 BPM",
+    "4/4 time signature",
+    "D minor key",
+    "male Finnish vocalist",
+    "rough textured voice with slight gravel and grit",
+    "vintage analog warmth",
+    "live band feel",
+    "subtle tape saturation",
+    "spring reverb on snare",
+    "natural room ambience"
+  ],
+
+  "negative_global_styles": [
+    "EDM",
+    "trap",
+    "dubstep drop",
+    "autotune",
+    "polished pop sheen",
+    "screaming metal",
+    "country twang",
+    "classical orchestra",
+    "sad melancholic mood",
+    "slow ballad tempo",
+    "lo-fi hip-hop",
+    "female vocals"
+  ],
+
+  "sections": [
+    {
+      "section_name": "Intro",
+      "positive_local_styles": [
+        "instrumental only",
+        "deep dub bass intro line",
+        "off-beat skank guitar",
+        "distant high-pitched 2-stroke moped engine sound effect approaching",
+        "atmospheric fade-in",
+        "loose hi-hat shuffle"
+      ],
+      "negative_local_styles": [
+        "vocals",
+        "lyrics",
+        "full chorus energy",
+        "bright pop"
+      ],
+      "duration_ms": 11000,
+      "lines": []
+    },
+
+    {
+      "section_name": "Verse 1",
+      "positive_local_styles": [
+        "conversational male vocals",
+        "storytelling delivery in Finnish",
+        "laid-back reggae groove",
+        "warm round bass",
+        "light percussion",
+        "guitar skank locked with hi-hat",
+        "spacious mix"
+      ],
+      "negative_local_styles": [
+        "a cappella",
+        "shouting",
+        "screaming",
+        "chorus-level energy"
+      ],
+      "duration_ms": 22500,
+      "lines": [
+        "Aurinko laskee Lapuan yllä",
+        "asvaltti hehkuu vielä yöhön",
+        "VR-parkki täyttyy kun kaupunki nukkuu",
+        "moottoreitten kuoro herää töihin",
+        "Vanhan Paukun varjossa seisoo piiput",
+        "muistuttaa ajasta kun täällä jyrähti",
+        "nyt patruunatehdas on hiljainen museo",
+        "mutta pamaus ei oo Lapualta kadonnu"
+      ]
+    },
+
+    {
+      "section_name": "Pre-Chorus 1",
+      "positive_local_styles": [
+        "building tension",
+        "vocal rises in pitch and intensity",
+        "drums energize with tom rolls",
+        "snare fills",
+        "rising anticipation into chorus",
+        "bass walks upward"
+      ],
+      "negative_local_styles": [
+        "mellow",
+        "stripped back",
+        "quiet"
+      ],
+      "duration_ms": 11000,
+      "lines": [
+        "Kierrokset nousee, kaasu pohjaan",
+        "naapuri herää, soittaa kunnalle",
+        "mutta ennen kuin sireenit ehtii paikalle",
+        "kuuluu jo kertosäe yli joen"
+      ]
+    },
+
+    {
+      "section_name": "Chorus 1",
+      "positive_local_styles": [
+        "wild vocal imitation of high-pitched 2-stroke 80cc moped engine being revved",
+        "screaming falsetto siren-like vocals",
+        "full band at maximum energy",
+        "punchy bass and drums",
+        "shout-along hook on the title line",
+        "raw live performance feel",
+        "vocal layered double-track on the howls"
+      ],
+      "negative_local_styles": [
+        "whispered",
+        "subdued",
+        "polished autotune",
+        "minimal arrangement"
+      ],
+      "duration_ms": 22500,
+      "lines": [
+        "Braaa-da-da-da-braaaah",
+        "wiiiing-wing-wing-wiiiiing",
+        "PV kasi-nolla huutaa kuin susi täydenkuun alla",
+        "La-pu-a — Jon-net",
+        "weee-ee-ee-weeeh",
+        "braaah — braaah — braaah",
+        "La-pu-a — Jon-net"
+      ]
+    },
+
+    {
+      "section_name": "Verse 2",
+      "positive_local_styles": [
+        "confident male vocals",
+        "fuller band arrangement than verse 1",
+        "steady reggae groove",
+        "bass and guitar locked in",
+        "Finnish lyrics, storytelling",
+        "subtle organ accents"
+      ],
+      "negative_local_styles": [
+        "a cappella",
+        "screaming",
+        "stripped back"
+      ],
+      "duration_ms": 22500,
+      "lines": [
+        "Seitsemäntoista vuotta, kasvot ei naura",
+        "lippis vinossa, hupparin huppu päässä",
+        "mopo viritetty kellarissa salaa",
+        "äiti luulee että poika on lukemassa",
+        "Kylärundi alkaa Citymarketilta",
+        "päättyy tähän asvalttiin auringon laskuun",
+        "ei oo täällä muuta, sanoo jonne hiljaa",
+        "jos ei kuulu, niin ainakin näkyy nyt"
+      ]
+    },
+
+    {
+      "section_name": "Pre-Chorus 2",
+      "positive_local_styles": [
+        "building tension",
+        "rising vocals",
+        "snare and tom fills",
+        "anticipation building"
+      ],
+      "negative_local_styles": [
+        "mellow",
+        "quiet"
+      ],
+      "duration_ms": 11000,
+      "lines": [
+        "Kierrokset nousee, kaasu pohjaan",
+        "poliisi tietää jo numeron ulkoa",
+        "mutta ennen kuin partio ehtii paikalle",
+        "kuuluu jo kertosäe yli joen"
+      ]
+    },
+
+    {
+      "section_name": "Chorus 2",
+      "positive_local_styles": [
+        "wild vocal imitation of high-pitched 2-stroke 80cc moped engine",
+        "screaming falsetto siren-like vocals",
+        "full band maximum energy",
+        "punchy bass and drums",
+        "shout-along hook",
+        "raw live performance feel"
+      ],
+      "negative_local_styles": [
+        "whispered",
+        "subdued",
+        "polished autotune"
+      ],
+      "duration_ms": 22500,
+      "lines": [
+        "Braaa-da-da-da-braaaah",
+        "wiiiing-wing-wing-wiiiiing",
+        "PV kasi-nolla huutaa kuin susi täydenkuun alla",
+        "La-pu-a — Jon-net",
+        "weee-ee-ee-weeeh",
+        "braaah — braaah — braaah",
+        "La-pu-a — Jon-net"
+      ]
+    },
+
+    {
+      "section_name": "Bridge",
+      "positive_local_styles": [
+        "spoken-word toaster style male vocal delivery",
+        "deep dub bass leading",
+        "guitar fills with spring reverb and tape delay",
+        "rhythmic chant feel",
+        "echoey dub production",
+        "tempo steady, energy reduced",
+        "drums drop to rim clicks and hi-hat"
+      ],
+      "negative_local_styles": [
+        "sung melody",
+        "screaming chorus",
+        "shouted hook"
+      ],
+      "duration_ms": 22500,
+      "lines": [
+        "Etelä-Pohjanmaan vanha tarina",
+        "puukkojunkkarit reuhasi joen varrella",
+        "sata vuotta sitten Härmästä Lapualle",
+        "samat pojat ärsytti, samaa verta valui",
+        "Nyt ei oo enää puukkoa vyössä",
+        "on kaasukahva ja kaksitahti syömmessä",
+        "mutta henki on sama, paikka on sama joki",
+        "sama Pohjanmaan tuuli kun jonne huutaa: oi"
+      ]
+    },
+
+    {
+      "section_name": "Verse 3",
+      "positive_local_styles": [
+        "conversational male vocals returning",
+        "laid-back reggae groove",
+        "full band, slightly nostalgic feel",
+        "Finnish lyrics, storytelling closing arc"
+      ],
+      "negative_local_styles": [
+        "a cappella",
+        "screaming",
+        "high energy chorus"
+      ],
+      "duration_ms": 22500,
+      "lines": [
+        "Kello käy yksitoista, valitukset tulee",
+        "kunnaneläin soittaa, koira haukkuu mukaan",
+        "jonne nostaa kaasun viimeisen kerran",
+        "sitten kotiin — äiti odottaa keittiössä",
+        "Huomenna sama paikka, sama meno",
+        "sama parkki, sama basso, sama ulvonta",
+        "Lapua ei nuku, Lapua ei kuole",
+        "niin kauan kun yks moottori vielä laulaa"
+      ]
+    },
+
+    {
+      "section_name": "Pre-Chorus 3",
+      "positive_local_styles": [
+        "building tension",
+        "rising vocals to final chorus",
+        "drum build",
+        "wide reverb tail"
+      ],
+      "negative_local_styles": [
+        "mellow",
+        "quiet"
+      ],
+      "duration_ms": 11000,
+      "lines": [
+        "Kierrokset nousee, kaasu pohjaan",
+        "tähdet syttyy yli Lapuanjoen",
+        "mutta ennen kuin maailma ehtii sammuttaa meidät",
+        "kuuluu vielä kertaalleen yli joen"
+      ]
+    },
+
+    {
+      "section_name": "Chorus Final",
+      "positive_local_styles": [
+        "wild vocal imitation of high-pitched 2-stroke 80cc moped engine, even more aggressive than earlier choruses",
+        "screaming falsetto siren-like vocals, doubled and pushed an octave up on the repeat",
+        "full band maximum energy throughout",
+        "punchy bass and drums",
+        "shout-along hook on title line",
+        "second repeat extra wild and chaotic with vocal ad-libs",
+        "crowd shout-along feel on the hook"
+      ],
+      "negative_local_styles": [
+        "whispered",
+        "subdued",
+        "polished autotune",
+        "fade out before end"
+      ],
+      "duration_ms": 45000,
+      "lines": [
+        "Braaa-da-da-da-braaaah",
+        "wiiiing-wing-wing-wiiiiing",
+        "PV kasi-nolla huutaa kuin susi täydenkuun alla",
+        "La-pu-a — Jon-net",
+        "weee-ee-ee-weeeh",
+        "braaah — braaah — braaah",
+        "La-pu-a — Jon-net",
+        "Braaaaa-da-da-da-braaaaaaah",
+        "wiiiiiing-wing-wing-wiiiiiiiing",
+        "PV kasi-nolla huutaa kuin susi täydenkuun alla",
+        "La-pu-a — Jon-net",
+        "weeeee-ee-ee-weeeeeh",
+        "braaaah — braaaah — braaaah",
+        "La-pu-a — Jon-net"
+      ]
+    },
+
+    {
+      "section_name": "Outro",
+      "positive_local_styles": [
+        "ghostly distant male vocal repeating the hook",
+        "single 2-stroke moped howl fading in background",
+        "bass and hi-hat groove continuing",
+        "atmospheric tail fading to silence",
+        "tape stop feel at very end"
+      ],
+      "negative_local_styles": [
+        "full vocals",
+        "shouted hook",
+        "abrupt cut",
+        "energy build"
+      ],
+      "duration_ms": 11000,
+      "lines": [
+        "La-pu-a — Jon-net",
+        "braa — braa — bra"
+      ]
+    }
+  ]
+}
